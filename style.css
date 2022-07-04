@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    background-color: rgb(221, 221, 221);
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+}
+
+.header {
+    color: rgb(168, 0, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#headerText {
+    font-size: 4vw;
+    padding-bottom: 5vh;
+}
+
+#icon {
+    filter: invert(10%) sepia(89%) saturate(4376%) hue-rotate(1deg) brightness(98%) contrast(119%);
+    height: 10vw;
+}
+
+.appHolder {
+    margin-left: 25vw;
+    margin-right: 25vw;
+    height: 50vh;
+    width: 50vw;
+    background-color: rgb(90, 90, 90);
+    border-radius: 10px;
+    border-color: rgb(90, 90, 90);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.842);
+}
