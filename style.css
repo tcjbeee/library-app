@@ -54,3 +54,25 @@ body {
     text-align: center;
     margin: 0.5vh;
 }
+
+.addButton {
+    margin-top: 2vh;
+    height: 5vh;
+    width: 20vw;
+    color: white;
+    background-color: rgb(62, 182, 62);
+    font-size: 2vh;
+    border-radius: 10px;
+    border-style: none;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.349);
+}
+
+.addButton:hover {
+    background-color: rgb(79, 192, 79);
+}
+
+.addButton:active {
+    background-color: rgb(62, 182, 62);
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.623);
+    transform: translateY(1px);
+}
