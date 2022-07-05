@@ -9,11 +9,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 5vh;
 }
 
 #headerText {
     font-size: 4vw;
-    padding-bottom: 5vh;
+    padding-bottom: 2vh;
 }
 
 #icon {
@@ -24,10 +25,32 @@ body {
 .appHolder {
     margin-left: 25vw;
     margin-right: 25vw;
-    height: 50vh;
+    height: fit-content;
     width: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2vh;
     background-color: rgb(90, 90, 90);
     border-radius: 10px;
     border-color: rgb(90, 90, 90);
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.842);
+}
+
+.book {
+    background-color: white;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45vw;
+    margin-top: 2vh;
+    border-radius: 10px;
+}
+
+.textField {
+    font-size: 1.5vh;
+    width: 45vw;
+    text-align: center;
+    margin: 0.5vh;
 }
