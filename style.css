@@ -76,3 +76,66 @@ body {
     box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.623);
     transform: translateY(1px);
 }
+
+.formDiv {
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    align-items: center;
+    width: 45vw;
+    border-radius: 10px;
+    background-color: rgb(172, 172, 172);
+}
+
+input {
+    height: 3vh;
+    width: 40vw;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    border-radius: 10px;
+    text-align: center;
+    border-style: none;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.466);
+}
+
+input:checked {
+    box-shadow: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+label {
+    margin-top: 1vh;
+    font-size: 1.5vh;
+}
+
+.checkBox {
+    box-shadow: none;
+}
+
+.submitButton {
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+    height: 5vh;
+    width: 20vw;
+    color: white;
+    /*background-color: rgb(182, 62, 62); */
+    background-color: rgb(62, 182, 62);
+    font-size: 2vh;
+    border-radius: 10px;
+    border-style: none;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.349);
+}
+
+.submitButton:hover {
+    background-color: rgb(79, 192, 79);
+}
+
+.submitButton:active {
+    background-color: rgb(62, 182, 62);
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.623);
+    transform: translateY(1px);
+}
