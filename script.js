@@ -1,4 +1,5 @@
 let myLibrary = [];
+let indexNumber = 0;
 
 
 // Book Constructor
@@ -17,6 +18,7 @@ const darkTower = new Book("The Dark Tower", "Stephen King", "387", "true");
 Book.prototype.addBookToLibrary = function addBookToLibrary() {
     myLibrary.push(this);
 }
+
 
 theHobbit.addBookToLibrary();
 darkTower.addBookToLibrary();
@@ -46,13 +48,37 @@ function addNewBook(myLibrary) {
     titleJoin.textContent = "by";
     authorText.textContent = newAddition.author;
     pagesText.textContent = "Pages: " + newAddition.pages;
-
+    readButton = document.createElement("button");
+    indexNumber++;
+    console.log(indexNumber);
+    newChild.dataset.index = indexNumber;
 
     newChild.appendChild(nameText);
     newChild.appendChild(titleJoin);
     newChild.appendChild(authorText);
     newChild.appendChild(pagesText);
+    newChild.appendChild(readButton);
+    toggleRead();
 
+    function toggleRead() {
+        if (this.haveRead == true) {
+            this.readButton.textContent = "I Have Read This";
+        }
+        else {
+            this.readButton.textContent = "I Have Not Read This";
+        }
+    }
+
+    readButton.addEventListener("click", () => {
+        if (readButton == true) {
+            this.haveRead = false;
+            toggleRead();
+        }
+        else {
+            this.haveRead = true;
+            toggleRead();
+        }
+    })
 
 }
 
@@ -156,3 +182,4 @@ button.addEventListener("click", () => {
     }
 });
 
+console.log(theHobbit);
