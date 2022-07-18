@@ -24,6 +24,7 @@ darkTower.addBookToLibrary();
 let bookDisplay = document.querySelector(".appHolder");
 const button = document.querySelector(".addButton");
 const formDiv = document.querySelector(".formDiv");
+const formHolder = document.querySelector(".formDiv");
 
 
 // Function that is run through each time a new book is added from the end of the array.
@@ -73,7 +74,11 @@ while (myLibrary.length != 0){
 } */
 
 button.addEventListener("click", () => {
-        formHolder = document.querySelector(".formDiv");
+
+    if (document.querySelector(".checkBox") != null) {
+        return null;
+    }
+        else {
         formHolder.name = "bookForm";
         formHolder.method = "post";
         //formHolder.action = addFormBook() {}
@@ -116,4 +121,21 @@ button.addEventListener("click", () => {
         submitButton.className = "submitButton";
         submitButton.textContent = "Submit Book";
         formHolder.appendChild(submitButton);
+
+        // Cancel
+
+        cancelButton = document.createElement("button");
+        cancelButton.className = "cancelButton";
+        cancelButton.textContent = "Cancel";
+        formHolder.appendChild(cancelButton);
+
+
+        cancelButton.addEventListener("click", () => {
+            while (formHolder.firstChild) {
+                formHolder.removeChild(formHolder.firstChild);
+            }
+        });
+
+    }
 });
+
