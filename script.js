@@ -84,6 +84,7 @@ button.addEventListener("click", () => {
         //formHolder.action = addFormBook() {}
         nameField = document.createElement("input");
         nameField.name = "bookName";
+        nameField.className = "nameField";
         nameField.placeholder = "Sherlock Holmes";
         nameLabel = document.createElement("label");
         nameLabel.for = "nameField";
@@ -92,6 +93,7 @@ button.addEventListener("click", () => {
         formHolder.appendChild(nameField);
         authorField = document.createElement("input");
         authorField.name = "authorName";
+        authorField.className = "authorField";
         authorLabel = document.createElement("label");
         authorLabel.for = "authorName";
         authorLabel.textContent = "Author:";
@@ -99,6 +101,7 @@ button.addEventListener("click", () => {
         formHolder.appendChild(authorField);
         pageField = document.createElement("input");
         pageField.name = "pageNumbers";
+        pageField.className = "pageField";
         pageField.type = "number";
         pageLabel = document.createElement("label");
         pageLabel.for = "pageNumbers";
@@ -121,6 +124,20 @@ button.addEventListener("click", () => {
         submitButton.className = "submitButton";
         submitButton.textContent = "Submit Book";
         formHolder.appendChild(submitButton);
+
+        submitButton.addEventListener("click", () => {
+                let newName = document.querySelector(".nameField").value;
+                let newAuthor = document.querySelector(".authorField").value;
+                let newPages = document.querySelector(".pageField").value;
+                let newHaveRead = document.querySelector(".checkBox").checked;
+                let newBook = new Book (newName, newAuthor, newPages, newHaveRead);
+                newBook.addBookToLibrary();
+                addNewBook(myLibrary);
+                while (formHolder.firstChild) {
+                    formHolder.removeChild(formHolder.firstChild);
+                }
+            
+        });
 
         // Cancel
 
