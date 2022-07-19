@@ -1,4 +1,5 @@
 let myLibrary = [];
+let newLibrary = [];
 let indexNumber = 0;
 
 
@@ -10,9 +11,9 @@ function Book(name, author, pages, haveRead) {
     this.haveRead = haveRead;
 }
 
-const theHobbit = new Book("The Hobbit", "J.R.R Tolkein", "300", "false");
+const theHobbit = new Book("The Hobbit", "J.R.R Tolkein", "300", false);
 
-const darkTower = new Book("The Dark Tower", "Stephen King", "387", "true");
+const darkTower = new Book("The Dark Tower", "Stephen King", "387", true);
 
 // Adding Book Object to Library Array
 Book.prototype.addBookToLibrary = function addBookToLibrary() {
@@ -32,6 +33,7 @@ const formHolder = document.querySelector(".formDiv");
 // Function that is run through each time a new book is added from the end of the array.
 function addNewBook(myLibrary) {
     let newAddition = myLibrary[0];
+    newLibrary.push(newAddition);
     myLibrary.shift();
     let newChild = document.createElement("div");
     newChild.className = "book";
@@ -49,55 +51,62 @@ function addNewBook(myLibrary) {
     authorText.textContent = newAddition.author;
     pagesText.textContent = "Pages: " + newAddition.pages;
     readButton = document.createElement("button");
-    indexNumber++;
-    console.log(indexNumber);
+    readButton.className = "readButton";
+    readButton.dataset.buttonIndex = indexNumber;
     newChild.dataset.index = indexNumber;
+    indexNumber++;
+
+    // Initial Read Status Setup
+    if (newAddition.haveRead === true) {
+        readButton.textContent = "I Have Read This";
+        readButton.style.backgroundColor = "#8bde83";
+    }
+    else {
+        readButton.textContent = "I Have Not Read This";
+        readButton.style.backgroundColor = "#c2c2c2";
+    }
+
+    // Append All New Elements
 
     newChild.appendChild(nameText);
     newChild.appendChild(titleJoin);
     newChild.appendChild(authorText);
     newChild.appendChild(pagesText);
     newChild.appendChild(readButton);
-    toggleRead();
 
-    function toggleRead() {
-        if (this.haveRead == true) {
-            this.readButton.textContent = "I Have Read This";
-        }
-        else {
-            this.readButton.textContent = "I Have Not Read This";
-        }
-    }
+
+
+    // Setting up Read Button Event
 
     readButton.addEventListener("click", () => {
-        if (readButton == true) {
-            this.haveRead = false;
-            toggleRead();
+        let buttonNumber = event.target.getAttribute(["data-button-index"]);
+        newLibrary[buttonNumber].haveRead = (!newLibrary[buttonNumber].haveRead);
+        if (newLibrary[buttonNumber].haveRead === true) {
+            event.target.textContent = "I Have Read This";
+            event.target.style.backgroundColor = "#8bde83";
         }
         else {
-            this.haveRead = true;
-            toggleRead();
+            event.target.textContent = "I Have Not Read This";
+            event.target.style.backgroundColor = "#c2c2c2";
         }
-    })
+        
+    });
+
+    /*deleteButton.addEventListener("click", () => {
+        if (this.buttonIndex == newLibrary) {
+            deletedEntry == newLibrary[buttonIndex];
+            console.log(deletedEntry);
+        }
+        else {
+            return null;
+        }
+    }); */
 
 }
 
 while (myLibrary.length != 0){
-    console.log(myLibrary.length)
     addNewBook(myLibrary);
 };
-
-/*function openForm() {
-    formHolder = document.querySelector(".formDiv");
-    formHolder.name = "bookForm";
-    formHolder.method = "post";
-    //formHolder.action = addFormBook() {}
-    nameField = document.createElement("input");
-    nameField.name = "bookName";
-    nameField.value = "Test Book Name";
-    formHolder.appendChild(nameField);
-    
-} */
 
 button.addEventListener("click", () => {
 
@@ -107,7 +116,6 @@ button.addEventListener("click", () => {
         else {
         formHolder.name = "bookForm";
         formHolder.method = "post";
-        //formHolder.action = addFormBook() {}
         nameField = document.createElement("input");
         nameField.name = "bookName";
         nameField.className = "nameField";
@@ -181,5 +189,3 @@ button.addEventListener("click", () => {
 
     }
 });
-
-console.log(theHobbit);
