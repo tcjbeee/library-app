@@ -11,18 +11,10 @@ function Book(name, author, pages, haveRead) {
     this.haveRead = haveRead;
 }
 
-const theHobbit = new Book("The Hobbit", "J.R.R Tolkein", "300", false);
-
-const darkTower = new Book("The Dark Tower", "Stephen King", "387", true);
-
 // Adding Book Object to Library Array
 Book.prototype.addBookToLibrary = function addBookToLibrary() {
     myLibrary.push(this);
 }
-
-
-theHobbit.addBookToLibrary();
-darkTower.addBookToLibrary();
 
 let bookDisplay = document.querySelector(".appHolder");
 const button = document.querySelector(".addButton");
