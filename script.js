@@ -52,11 +52,21 @@ function addNewBook(myLibrary) {
     pagesText.textContent = "Pages: " + newAddition.pages;
     readButton = document.createElement("button");
     readButton.className = "readButton";
+
+    // Delete Button SVG
+
+    deleteButton = document.createElement("img");
+    deleteButton.src = "icons/delete.svg";
+    deleteButton.dataset.buttonIndex = indexNumber;
+    deleteButton.id = "delete";
+
+
     readButton.dataset.buttonIndex = indexNumber;
     newChild.dataset.index = indexNumber;
     indexNumber++;
 
     // Initial Read Status Setup
+
     if (newAddition.haveRead === true) {
         readButton.textContent = "I Have Read This";
         readButton.style.backgroundColor = "#8bde83";
@@ -68,11 +78,14 @@ function addNewBook(myLibrary) {
 
     // Append All New Elements
 
+    newChild.appendChild(deleteButton);
     newChild.appendChild(nameText);
     newChild.appendChild(titleJoin);
     newChild.appendChild(authorText);
     newChild.appendChild(pagesText);
     newChild.appendChild(readButton);
+
+
 
 
 
@@ -92,15 +105,20 @@ function addNewBook(myLibrary) {
         
     });
 
-    /*deleteButton.addEventListener("click", () => {
-        if (this.buttonIndex == newLibrary) {
-            deletedEntry == newLibrary[buttonIndex];
-            console.log(deletedEntry);
-        }
-        else {
-            return null;
-        }
-    }); */
+    // Setting Up Delete Button Event
+
+    deleteButton.addEventListener("click", () => {
+        let buttonNumber = event.target.getAttribute(["data-button-index"]);
+        newLibrary.splice(buttonNumber);
+        entryToDelete = document.querySelector(`[data-index="${buttonNumber}`);
+        console.log(entryToDelete);
+        entryToDelete.remove();
+        console.log(entryToDelete);
+
+
+        
+
+    });
 
 }
 
